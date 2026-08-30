@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Github, Instagram, Mail, ArrowRight, Phone } from "lucide-react";
+import { Github, Instagram, Mail, Phone } from "lucide-react";
 import { Magnetic } from "./Magnetic";
 
 export function Contact() {
@@ -16,19 +16,6 @@ export function Contact() {
             <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter mb-8">
               Let's create <br /> something <span className="italic font-light text-neutral-400">together.</span>
             </h2>
-            <a
-              href="mailto:nirajmeenajaipur.2008@gmail.com"
-              className="inline-flex items-center gap-4 text-xl md:text-2xl hover:text-neutral-300 transition-colors group"
-            >
-              nirajmeenajaipur.2008@gmail.com
-              <Magnetic strength={0.4}>
-                <motion.div
-                  className="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors"
-                >
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </motion.div>
-              </Magnetic>
-            </a>
           </motion.div>
 
           <motion.div

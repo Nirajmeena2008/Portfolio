@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Hero, Gallery, About, Contact, ScrollProgress, Marquee } from "./components";
+import { Hero, Gallery, About, Contact, ScrollProgress, Marquee, Payment } from "./components";
 
 export default function App() {
   return (
@@ -13,6 +13,7 @@ export default function App() {
       <About />
       <Gallery />
       <Marquee />
+      <Payment />
       <Contact />
     </main>
   );

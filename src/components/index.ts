@@ -6,4 +6,5 @@ export * from './Typewriter';
 export * from './ScrollProgress';
 export * from './Magnetic';
 export * from './Marquee';
+export * from './Payment';
 

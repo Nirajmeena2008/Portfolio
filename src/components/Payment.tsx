@@ -37,9 +37,9 @@ export function Payment() {
       const { order_id, currency } = await orderRes.json();
 
       // 2. Open Razorpay modal
-      console.log("Razorpay Key ID:", import.meta.env.VITE_RAZORPAY_KEY_ID);
+      console.log("Razorpay Key ID:", import.meta.env.NEXT_PUBLIC_RAZORPAY_KEY_ID);
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID ,
+        key: import.meta.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ,
         amount: amount * 100,
         currency,
         name: "Aperture Portfolio",

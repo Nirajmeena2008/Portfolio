@@ -1,16 +1,28 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+import crypto from "crypto";
+  
+const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID || "rzp_test_Tj4hWYMkHzIayJ";
+const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || "B3H4GY7xrsB7EmMOXMV1TKRv";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'POST') {
+  // CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { amount } = req.body;
-  const { RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET } = process.env;
-
   if (!RAZORPAY_KEY_ID || !RAZORPAY_KEY_SECRET) {
-    return res.status(500).json({ error: "Razorpay keys are not configured" });
+    return res.status(500).json({ error: "Razorpay credentials not configured" });
   }
+
+  const { amount } = req.body;
 
   if (!amount || amount < 100) {
     return res.status(400).json({ error: "Amount must be at least 100 paise" });
@@ -38,9 +50,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const order = await response.json();
-    return res.status(200).json({ order_id: order.id, amount: order.amount, currency: order.currency });
+    res.json({ order_id: order.id, amount: order.amount, currency: order.currency });
   } catch (err) {
     console.error("Razorpay create-order error:", err);
-    return res.status(500).json({ error: "Failed to create order" });
+    res.status(500).json({ error: "Failed to create order" });
   }
 }

@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import crypto from "crypto";
   
-const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET || "O9AXb0o4Wib04yLyaBvJFMPv";
+const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET ;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS headers

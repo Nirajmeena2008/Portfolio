@@ -38,7 +38,7 @@ export function Payment() {
 
       // 2. Open Razorpay modal
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_TjLcoGapvgttPB",
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID ,
         amount: amount * 100,
         currency,
         name: "Aperture Portfolio",
